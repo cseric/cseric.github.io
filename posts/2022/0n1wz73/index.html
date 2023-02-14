@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Golang基础学习四 | 变量介绍 | Eric的个人博客</title>
+    <meta property="og:title" content="Golang基础学习四 | 变量介绍 - Eric的个人博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2022-07-31T16:00:29&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2022-07-31T16:00:29&#43;08:00'>
+        
+    <meta name="Keywords" content="c语言,c&#43;&#43;,cpp,c/c&#43;&#43;,Golang,Go语言,linux,hugo博客,编程学习,后端开发,软件开发">
+    <meta name="description" content="Golang基础学习四 | 变量介绍">
+        
+    <meta name="author" content="问渊Eric">
+    <meta property="og:url" content="https://zloong.github.io/posts/2022/0n1wz73/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <h1>
+                        <a id="logo" href="https://zloong.github.io">
+                            Eric的个人博客
+                        </a>
+                    </h1>
+                    <div class="header-info">
+                        <div class="profile-area">
+  <a class="profile-avatar" href="/">
+    <img src="/img/avatar.jpg">
+  </a>
+  <span class="profile-author">问渊Eric</span>
+  <span class="profile-bio">萌新一枚，请多指教</span>
+  
+    <div class="profile-social">
+        
+        <a rel="nofollow" target="_blank" href="https://github.com/cseric"><img src="/img/social/github.svg" title="github"></a>
+        
+        <a rel="nofollow" target="_blank" href="https://space.bilibili.com/350616958"><img src="/img/social/bilibili.svg" title="哔哩哔哩"></a>
+        
+    </div>
+    
+</div>
+                    </div>
+                
+                <span class="description" id="typed"></span>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://zloong.github.io">首页</a>
+                    
+                    <a  href="https://zloong.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://zloong.github.io/categories/" title="分类">分类</a>
+                    
+                    <a  href="https://zloong.github.io/tags/" title="标签">标签</a>
+                    
+                    <a  href="https://zloong.github.io/search/" title="搜索">搜索</a>
+                    
+                    <a  href="https://zloong.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<script src="/js/typed.min.js"></script>
+<script>
+    new Typed("#typed",{
+        strings: ['嗨，欢迎访问我的个人博客','一个00后软件开发程序员的博客','专注于C\/C\u002b\u002b, Golang, 软件开发, 爱好开源'],
+        typeSpeed: 70,
+        backSpeed: 35,
+        startDelay: 1000,
+        backDelay: 1000,
+        loop: true,
+        loopCount: Infinity
+    })
+</script>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <div class="toc-area">
+    <button class="toc-btn" onclick="switchMenu();"><img src="/img/menu.svg"/ title="文章目录"></button>
+    <div class="toc-slide">
+        <div class="toc-title">文章目录</div>
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#变量">变量</a></li>
+    <li><a href="#变量的零值">变量的零值</a></li>
+    <li><a href="#变量声明的方式">变量声明的方式</a></li>
+    <li><a href="#简洁赋值">简洁赋值</a></li>
+    <li><a href="#多变量声明">多变量声明</a></li>
+    <li><a href="#变量的注意事项">变量的注意事项</a></li>
+    <li><a href="#变量作用域">变量作用域</a></li>
+  </ol>
+</nav>
+    </div>
+</div>
+<script src="/js/toc.js"></script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Golang基础学习四 | 变量介绍</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2022-07-31
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/Golang'>Golang</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">| <span id="busuanzi_value_page_pv"></span><span>
+                    浏览</span></span>
+        </div>
+        
+        <div class="post-meta">
+            | <span>1293 字</span>
+        </div>
+        <div class="post-meta">
+            | <span>3 分钟</span>
+        </div>
+        <div class="post-content">
+            <p>有了数据类型，就要开始使用编程中经常打交道的变量了，Go语言的变量声明和定义和C语言不一样，它是类型后置的，也提供了多种声明和定义方式。</p>
+<h3 id="变量">变量</h3>
+<p>Go语言声明变量一般是使用<code>var</code>关键字</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">//var 变量名 变量类型
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">variableName</span> <span style="color:#66d9ef">type</span>
+</span></span></code></pre></div><blockquote>
+<p>变量名和标识符的命名规则一致</p>
+</blockquote>
+<p>可以一次声明多个变量</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">variableName1</span>, <span style="color:#a6e22e">variableName2</span> <span style="color:#66d9ef">type</span>
+</span></span></code></pre></div><p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">str</span> <span style="color:#66d9ef">string</span> = <span style="color:#e6db74">&#34;Hello, Go!&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">str</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">num1</span>, <span style="color:#a6e22e">num2</span> <span style="color:#66d9ef">int</span> = <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">64</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">num1</span>, <span style="color:#a6e22e">num2</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>运行结果为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Hello, Go!
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">32</span> <span style="color:#ae81ff">64</span>
+</span></span></code></pre></div><h3 id="变量的零值">变量的零值</h3>
+<p>变量只声明没有初始化就会被赋予对应类型的零值：</p>
+<ul>
+<li>数值类型的零值为<code>0</code></li>
+<li>布尔类型的零值为<code>false</code></li>
+<li>字符串的零值为<code>&quot;&quot;</code>（空字符串）</li>
+</ul>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">float64</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">c</span> <span style="color:#66d9ef">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">d</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%v %v %v %q\n&#34;</span>, <span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">d</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>运行结果为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> false <span style="color:#e6db74">&#34;&#34;</span>
+</span></span></code></pre></div><h3 id="变量声明的方式">变量声明的方式</h3>
+<p>Go语言中有三种变量声明方式：</p>
+<ol>
+<li>使用var关键字，指定变量类型</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">variableName</span> <span style="color:#66d9ef">type</span>	<span style="color:#75715e">//未初始化，变量值将赋予默认值
+</span></span></span></code></pre></div><ol start="2">
+<li>使用var关键字，省略变量类型（类型自动推导）</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">variableName</span> = <span style="color:#a6e22e">value</span>	<span style="color:#75715e">//根据value自动推导变量类型
+</span></span></span></code></pre></div><ol start="3">
+<li>省略var关键字和变量类型（简洁赋值）</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">variableName</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">value</span>	<span style="color:#75715e">//根据value自动推导变量类型
+</span></span></span></code></pre></div><h3 id="简洁赋值">简洁赋值</h3>
+<p>对于简洁赋值的使用，有以下注意事项：</p>
+<ul>
+<li>只能在函数体内使用，不能用于全局变量</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">2</span>	<span style="color:#75715e">//错误使用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">2</span> 	<span style="color:#75715e">//正确使用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>不可使用<code>:=</code>重复声明变量</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>	<span style="color:#75715e">//错误，重复声明变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span> = <span style="color:#ae81ff">1</span>	<span style="color:#75715e">//正确，为b赋予新值
+</span></span></span></code></pre></div><ul>
+<li>可以使用<code>:=</code>同时声明多个变量（即使是前面已经声明过的变量，但至少要有一个是新变量）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">10</span>, <span style="color:#66d9ef">true</span>, <span style="color:#e6db74">&#34;Hello&#34;</span>	<span style="color:#75715e">//正确
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">d</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">e</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">e</span> = <span style="color:#ae81ff">10</span>, <span style="color:#e6db74">&#34;Hi&#34;</span>	<span style="color:#75715e">//正常赋值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//上述三行可以使用下面的简洁赋值代替
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//若和第3行和第4行一起出现，则报错
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">e</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">10</span>, <span style="color:#e6db74">&#34;Hi&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">e</span>, <span style="color:#a6e22e">f</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">10</span>, <span style="color:#e6db74">&#34;Hi&#34;</span>, <span style="color:#66d9ef">true</span>	<span style="color:#75715e">//正确，为d和e赋予新值，声明f为布尔类型，值为true
+</span></span></span></code></pre></div><h3 id="多变量声明">多变量声明</h3>
+<p>Go语言有以下形式的多变量声明：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">//一般形式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">variableName1</span>, <span style="color:#a6e22e">variableName2</span> <span style="color:#66d9ef">type</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">variableName1</span>, <span style="color:#a6e22e">variableName2</span> = <span style="color:#a6e22e">value1</span>, <span style="color:#a6e22e">value2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//自动推导
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">variableName1</span>, <span style="color:#a6e22e">variableName2</span> = <span style="color:#a6e22e">value1</span>, <span style="color:#a6e22e">value2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//简洁赋值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">variableName1</span>, <span style="color:#a6e22e">variableName2</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">value1</span>, <span style="color:#a6e22e">value2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//上述三种多用于非全局变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//下面这种形式常用于全局变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">variableName1</span> <span style="color:#a6e22e">type1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">variableName2</span> <span style="color:#a6e22e">type2</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span>	<span style="color:#75715e">//一般形式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> (	<span style="color:#75715e">//推荐的全局变量声明形式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">c</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">d</span> <span style="color:#66d9ef">bool</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">e</span>, <span style="color:#a6e22e">f</span> <span style="color:#66d9ef">int</span> = <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">64</span>	<span style="color:#75715e">//一般形式（声明并赋值）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">g</span>, <span style="color:#a6e22e">h</span> = <span style="color:#66d9ef">true</span>, <span style="color:#e6db74">&#34;hello&#34;</span>	<span style="color:#75715e">//自动推导形式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#34;hi&#34;</span>	<span style="color:#75715e">//简洁赋值形式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">d</span>, <span style="color:#a6e22e">e</span>, <span style="color:#a6e22e">f</span>, <span style="color:#a6e22e">g</span>, <span style="color:#a6e22e">h</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">j</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>运行结果为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>  false <span style="color:#ae81ff">32</span> <span style="color:#ae81ff">64</span> true hello false hi
+</span></span></code></pre></div><h3 id="变量的注意事项">变量的注意事项</h3>
+<p>对于变量的使用，有以下注意事项：</p>
+<ul>
+<li>
+<p>全局变量允许声明但不使用，但是局部变量一旦声明必须使用，不使用会编译出错</p>
+</li>
+<li>
+<p>多变量可以在同一行进行赋值，同类型变量可以声明在同一行，同类型变量可以通过以下方式交换变量值</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> = <span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">a</span>
+</span></span></code></pre></div><ul>
+<li>下划线<code>_</code>是Go语言定义的一个常用的只写变量，用来抛弃值，比如Go语言的函数支持多返回值，但有时我们只需要其中特定几个返回值</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">//此处可把32和64当做一个函数的返回值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">b</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">64</span>	<span style="color:#75715e">//此时32被抛弃，b的值为64
+</span></span></span></code></pre></div><h3 id="变量作用域">变量作用域</h3>
+<p>Go语言中变量的作用域分为三种：</p>
+<ul>
+<li>局部作用域（局部变量）</li>
+<li>全局作用域（全局变量）</li>
+<li>函数作用域（形式参数）</li>
+</ul>
+<p>局部变量：在函数体内声明的变量称之为局部变量，它作用于函数体内，函数参数和返回值变量也是局部变量。</p>
+<p>全局变量：在函数体外声明的变量称之为全局变量，作用于整个包甚至外部包，全局变量可以在任何函数中使用。</p>
+<p>形式参数：形式参数作为函数体内的局部变量来使用，只作用于当函数体内。</p>
+        </div>
+
+        
+<div class="post-archive">
+    <span><strong>转载请注明出处（作者，链接）</strong>👇👇👇</span>
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://zloong.github.io">问渊Eric</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://zloong.github.io/posts/2022/0n1wz73/">https://zloong.github.io/posts/2022/0n1wz73/</a></li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>阅读更多</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2022/1ouigkd/" target="_blank">Golang基础学习十四 | 接口</a></li>
+        
+        <li><a href="/posts/2022/nh22l8v/" target="_blank">Golang基础学习十三 | 集合</a></li>
+        
+        <li><a href="/posts/2022/azs23d7/" target="_blank">Golang基础学习十二 | 切片</a></li>
+        
+        <li><a href="/posts/2022/vg9drtc/" target="_blank">Golang基础学习十一 | 结构体</a></li>
+        
+        <li><a href="/posts/2022/6jqqa66/" target="_blank">Golang基础学习十 | 指针</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/Golang'>Golang</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    
+    
+
+</div>
+
+                    <footer id="footer">
+    <div class="footer-item">
+        &copy; 2023 <a rel="nofollow" target="_blank" href="https://zloong.github.io">Eric的个人博客</a>
+    </div>
+    <div class="footer-item">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-red">Maupassant</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/cseric" target="_black"><span class="badge-subject">Modified by</span><span class="badge-value bg-brightgreen">cseric</span></a>
+        </div>
+    </div>
+    
+    <div class="footer-item">
+        <span>-</span>
+        <span id="busuanzi_container_site_pv">
+            本站总访问量 <span id="busuanzi_value_site_pv" style="color: #1E90FF;"></span> 次
+        </span>
+        <span>|</span>
+        <span id="busuanzi_container_site_uv">
+          本站访客数 <span id="busuanzi_value_site_uv" style="color: #1E90FF;"></span> 人次
+        </span>
+        <span>-</span>
+    </div>
+    
+    <div class="footer-item">
+        本站文章采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" style="color: #1E90FF;"><b>BY-NC 4.0</b></a>进行许可
+    </div>
+    
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='//cdn.bootcdn.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="back-top"><img src="/img/top.svg" title="回到顶部"></a>
+<script type="text/javascript" src='/js/totop.js'></script>
+<style type="text/css">
+div.highlight {
+    position: relative;
+    margin: 1em 0px;
+}
+
+.copy-code {
+    display: none;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 35px;
+    height: 25px;
+     
+    background: rgba(47, 53, 66, 0.8) url("/img/copy.svg") center no-repeat;
+    padding: 0 5px;
+    font: inherit;
+    user-select: none;
+    cursor: pointer;
+    border: 1px solid #666;
+    border-radius: 3px;
+}
+
+div.highlight:hover .copy-code,pre:hover .copy-code {
+    display: block;
+}
+
+</style>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+
+        function copyingDone() {
+          copybutton.style.background = 'rgba(47, 53, 66, 0.8) url("/img/copied.svg") center no-repeat';
+            setTimeout(() => {
+              copybutton.style.background = 'rgba(47, 53, 66, 0.8) url("/img/copy.svg") center no-repeat';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+                </div>
+
+                <div id="secondary">
+
+    <section class="widget">
+        <div class="profile-area">
+  <a class="profile-avatar" href="/">
+    <img src="/img/avatar.jpg">
+  </a>
+  <span class="profile-author">问渊Eric</span>
+  <span class="profile-bio">萌新一枚，请多指教</span>
+  
+    <div class="profile-social">
+        
+        <a rel="nofollow" target="_blank" href="https://github.com/cseric"><img src="/img/social/github.svg" title="github"></a>
+        
+        <a rel="nofollow" target="_blank" href="https://space.bilibili.com/350616958"><img src="/img/social/bilibili.svg" title="哔哩哔哩"></a>
+        
+    </div>
+    
+</div>
+    </section>
+
+    
+  
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/h4fvxqg/" title="Ubuntu20.04更换国内源教程" target="_blank">Ubuntu20.04更换国内源教程</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/1ouigkd/" title="Golang基础学习十四 | 接口" target="_blank">Golang基础学习十四 | 接口</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/nh22l8v/" title="Golang基础学习十三 | 集合" target="_blank">Golang基础学习十三 | 集合</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/azs23d7/" title="Golang基础学习十二 | 切片" target="_blank">Golang基础学习十二 | 切片</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/vg9drtc/" title="Golang基础学习十一 | 结构体" target="_blank">Golang基础学习十一 | 结构体</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/6jqqa66/" title="Golang基础学习十 | 指针" target="_blank">Golang基础学习十 | 指针</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/6jqqa66/" title="Golang基础学习九 | 数组" target="_blank">Golang基础学习九 | 数组</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/csi3zxn/" title="Golang基础学习八 | 函数" target="_blank">Golang基础学习八 | 函数</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/a0kkkog/" title="Golang基础学习七 | 条件和循环" target="_blank">Golang基础学习七 | 条件和循环</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/euc6c0t/" title="Golang基础学习六 | 运算符" target="_blank">Golang基础学习六 | 运算符</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li class="categories-item"><a href="https://zloong.github.io/categories/C/">C (1)</a></li>
+    
+    <li class="categories-item"><a href="https://zloong.github.io/categories/C&#43;&#43;/">C&#43;&#43; (4)</a></li>
+    
+    <li class="categories-item"><a href="https://zloong.github.io/categories/Golang/">Golang (15)</a></li>
+    
+    <li class="categories-item"><a href="https://zloong.github.io/categories/Linux/">Linux (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://zloong.github.io/tags/C/">C</a>
+    
+    <a href="https://zloong.github.io/tags/C&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="https://zloong.github.io/tags/Golang/">Golang</a>
+    
+    <a href="https://zloong.github.io/tags/Linux/">Linux</a>
+    
+    <a href="https://zloong.github.io/tags/VSCode/">VSCode</a>
+    
+    <a href="https://zloong.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://zloong.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

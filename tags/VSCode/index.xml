@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VSCode on Eric的个人博客</title>
+    <link>https://zloong.github.io/tags/VSCode/</link>
+    <description>Recent content in VSCode on Eric的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 23 Jul 2022 11:06:04 +0800</lastBuildDate><atom:link href="https://zloong.github.io/tags/VSCode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用VS Code&#43;Clangd&#43;CMake搭建C&#43;&#43;开发环境</title>
+      <link>https://zloong.github.io/posts/2022/54uzi8k/</link>
+      <pubDate>Sat, 23 Jul 2022 11:06:04 +0800</pubDate>
+      
+      <guid>https://zloong.github.io/posts/2022/54uzi8k/</guid>
+      <description>&lt;p&gt;本文是基于WSL2的Ubuntu20.04搭建的C/C++开发环境&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

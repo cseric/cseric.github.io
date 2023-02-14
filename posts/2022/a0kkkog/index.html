@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Golang基础学习七 | 条件和循环 | Eric的个人博客</title>
+    <meta property="og:title" content="Golang基础学习七 | 条件和循环 - Eric的个人博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2022-08-05T21:19:36&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2022-08-05T21:19:36&#43;08:00'>
+        
+    <meta name="Keywords" content="c语言,c&#43;&#43;,cpp,c/c&#43;&#43;,Golang,Go语言,linux,hugo博客,编程学习,后端开发,软件开发">
+    <meta name="description" content="Golang基础学习七 | 条件和循环">
+        
+    <meta name="author" content="问渊Eric">
+    <meta property="og:url" content="https://zloong.github.io/posts/2022/a0kkkog/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <h1>
+                        <a id="logo" href="https://zloong.github.io">
+                            Eric的个人博客
+                        </a>
+                    </h1>
+                    <div class="header-info">
+                        <div class="profile-area">
+  <a class="profile-avatar" href="/">
+    <img src="/img/avatar.jpg">
+  </a>
+  <span class="profile-author">问渊Eric</span>
+  <span class="profile-bio">萌新一枚，请多指教</span>
+  
+    <div class="profile-social">
+        
+        <a rel="nofollow" target="_blank" href="https://github.com/cseric"><img src="/img/social/github.svg" title="github"></a>
+        
+        <a rel="nofollow" target="_blank" href="https://space.bilibili.com/350616958"><img src="/img/social/bilibili.svg" title="哔哩哔哩"></a>
+        
+    </div>
+    
+</div>
+                    </div>
+                
+                <span class="description" id="typed"></span>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://zloong.github.io">首页</a>
+                    
+                    <a  href="https://zloong.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://zloong.github.io/categories/" title="分类">分类</a>
+                    
+                    <a  href="https://zloong.github.io/tags/" title="标签">标签</a>
+                    
+                    <a  href="https://zloong.github.io/search/" title="搜索">搜索</a>
+                    
+                    <a  href="https://zloong.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<script src="/js/typed.min.js"></script>
+<script>
+    new Typed("#typed",{
+        strings: ['嗨，欢迎访问我的个人博客','一个00后软件开发程序员的博客','专注于C\/C\u002b\u002b, Golang, 软件开发, 爱好开源'],
+        typeSpeed: 70,
+        backSpeed: 35,
+        startDelay: 1000,
+        backDelay: 1000,
+        loop: true,
+        loopCount: Infinity
+    })
+</script>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <div class="toc-area">
+    <button class="toc-btn" onclick="switchMenu();"><img src="/img/menu.svg"/ title="文章目录"></button>
+    <div class="toc-slide">
+        <div class="toc-title">文章目录</div>
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#if语句">if语句</a></li>
+    <li><a href="#switch语句">switch语句</a></li>
+    <li><a href="#for循环">for循环</a></li>
+  </ol>
+</nav>
+    </div>
+</div>
+<script src="/js/toc.js"></script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Golang基础学习七 | 条件和循环</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2022-08-05
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/Golang'>Golang</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">| <span id="busuanzi_value_page_pv"></span><span>
+                    浏览</span></span>
+        </div>
+        
+        <div class="post-meta">
+            | <span>1565 字</span>
+        </div>
+        <div class="post-meta">
+            | <span>4 分钟</span>
+        </div>
+        <div class="post-content">
+            <p>Go语言的条件和循环语句和C相似，但也有一些特殊且独有的用法和写法。</p>
+<h3 id="if语句">if语句</h3>
+<p>Go语言中if语句的语法为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">布尔表达式</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 语句 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>但布尔表达式为True时，执行内部的语句，否则不执行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// if语句
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">num</span> <span style="color:#66d9ef">int</span> = <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">num</span> &lt; <span style="color:#ae81ff">16</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 当num小于16会执行以下语句
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;num 小于 16&#34;</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;num = %d\n&#34;</span>, <span style="color:#a6e22e">num</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>执行结果为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>num 小于 <span style="color:#ae81ff">16</span>
+</span></span><span style="display:flex;"><span>num <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span></code></pre></div><p>Go语言中if还有另外一种形式，它可以在布尔表达式添加变量初始化语句</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">变量初始化</span>; <span style="color:#a6e22e">布尔表达式</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 语句 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>语句执行时先初始化变量，再判断布尔表达式，若为True，执行内部的语句</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// if变量初始化语句
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">10</span>; <span style="color:#a6e22e">num</span> &lt; <span style="color:#ae81ff">16</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* num小于16时执行以下语句 */</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;num 小于 16&#34;</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* Error: num只作用于if语句中 */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// fmt.Printf(&#34;num = %d\n&#34;, num)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>执行结果为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>num 小于 <span style="color:#ae81ff">16</span>
+</span></span></code></pre></div><p>和C语言一样，Go语言的if语句可以使用可选的else语句，当if语句的布尔表达式为False时执行else内部的语句</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">布尔表达式</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 语句 */</span>
+</span></span><span style="display:flex;"><span>}<span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 语句 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// else语句
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">num</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">18</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">num</span> &lt; <span style="color:#ae81ff">16</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;num 小于 16&#34;</span>)
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;num 大于 16&#34;</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>执行结果为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>num 大于 <span style="color:#ae81ff">16</span>
+</span></span></code></pre></div><p>除了else语句，还有else if语句，用来条件匹配</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">布尔表达式</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 语句 */</span>
+</span></span><span style="display:flex;"><span>}<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">布尔表达式</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 语句 */</span>
+</span></span><span style="display:flex;"><span>}<span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 语句 */</span>
+</span></span><span style="display:flex;"><span>} 
+</span></span></code></pre></div><p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// else if语句的使用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">num</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">90</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;优秀&#34;</span>)
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">80</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;良好&#34;</span>)
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">70</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;一般&#34;</span>)
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">60</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;及格&#34;</span>)
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;不及格&#34;</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>执行结果为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>良好
+</span></span></code></pre></div><blockquote>
+<p>Go语言的if或else if语句中可以嵌套一个或多个if或else if语句。</p>
+</blockquote>
+<h3 id="switch语句">switch语句</h3>
+<p>和C语言一样，Go语言也有switch语句，但Go语言的case默认自带break，执行了匹配的case后就结束switch语句</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">item1</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">item1</span>:
+</span></span><span style="display:flex;"><span>    	<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">item2</span>:
+</span></span><span style="display:flex;"><span>    	<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">default</span>:
+</span></span><span style="display:flex;"><span>    	<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>值得注意的是case后面可以是任何类型（不局限与常量或者整数），item1和item2是同类型的任意值，或者是最终结果为相同类型的表达式；另外case后面可以写多个值（以逗号分隔）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// switch语句
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">num</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">70</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">num</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> <span style="color:#ae81ff">90</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;A&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> <span style="color:#ae81ff">80</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;B&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> <span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">70</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;C&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">default</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;D&#34;</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>执行结果为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C
+</span></span></code></pre></div><p>Go语言的switch语句还可以做类型判断</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">x</span>.(<span style="color:#66d9ef">type</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">type</span>:
+</span></span><span style="display:flex;"><span>    	<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">type</span>:
+</span></span><span style="display:flex;"><span>    	<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span>:
+</span></span><span style="display:flex;"><span>    	<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// switch类型判断
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">item</span> <span style="color:#66d9ef">interface</span>{}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">item</span>.(<span style="color:#66d9ef">type</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> <span style="color:#66d9ef">nil</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;nil&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> <span style="color:#66d9ef">int</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;int&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> <span style="color:#66d9ef">func</span>(<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;func(int)&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> <span style="color:#66d9ef">bool</span>, <span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">float64</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;bool, string or float64x&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">default</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;unkown&#34;</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>执行结果为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nil
+</span></span></code></pre></div><blockquote>
+<p>Go语言的switch可以使用fallthrough来继续执行下一条case，不会对下一条case的表达式进行判断</p>
+</blockquote>
+<h3 id="for循环">for循环</h3>
+<p>Go语言的for循环语句有三种写法:</p>
+<ol>
+<li>和C语言一样</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">初始化语句</span>; <span style="color:#a6e22e">条件表达式</span>; <span style="color:#a6e22e">自增</span><span style="color:#f92672">/</span><span style="color:#a6e22e">自减操作</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 语句 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="2">
+<li>和C语言的while一样</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">条件表达式</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 语句 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="3">
+<li>无限循环，和C语言的for(;;)一样</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 语句 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>除了以上三种，Go语言还提供了range语法对切片、映射、数组以及字符串等进行迭代操作</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">dataMap</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dataMap</span>[<span style="color:#a6e22e">key</span>] = <span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>key和value可以根据需要省略</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// 只读取value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">value</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">dataMap</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 只读取key
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">dataMap</span>
+</span></span></code></pre></div><blockquote>
+<p>注意：Go语言没有while语句，使用for语句代替while循环</p>
+</blockquote>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 第一种 */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">10</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d &#34;</span>, <span style="color:#a6e22e">i</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>()
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 第二种 */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">num</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">num</span> &gt; <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d &#34;</span>, <span style="color:#a6e22e">num</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">num</span><span style="color:#f92672">--</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>()
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* Go语言数组 */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">arr</span> <span style="color:#f92672">:=</span> [<span style="color:#ae81ff">5</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>}
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* range形式 */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">arr</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;arr[%d] = %d\n&#34;</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">value</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">arr</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d\n&#34;</span>, <span style="color:#a6e22e">value</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">arr</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d\n&#34;</span>, <span style="color:#a6e22e">key</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>执行结果为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">6</span> <span style="color:#ae81ff">7</span> <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">9</span> 
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10</span> <span style="color:#ae81ff">9</span> <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">7</span> <span style="color:#ae81ff">6</span> <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">1</span> 
+</span></span><span style="display:flex;"><span>arr<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>arr<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>arr<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>arr<span style="color:#f92672">[</span>3<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>arr<span style="color:#f92672">[</span>4<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>
+</span></span></code></pre></div><blockquote>
+<p>Go语言的for循环语句和C语言一样，也可以嵌套使用。有循环语句就要有循环控制语句，Go语言支持break语句和continue语句，也有goto语句（但不推荐使用goto）</p>
+</blockquote>
+        </div>
+
+        
+<div class="post-archive">
+    <span><strong>转载请注明出处（作者，链接）</strong>👇👇👇</span>
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://zloong.github.io">问渊Eric</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://zloong.github.io/posts/2022/a0kkkog/">https://zloong.github.io/posts/2022/a0kkkog/</a></li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>阅读更多</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2022/1ouigkd/" target="_blank">Golang基础学习十四 | 接口</a></li>
+        
+        <li><a href="/posts/2022/nh22l8v/" target="_blank">Golang基础学习十三 | 集合</a></li>
+        
+        <li><a href="/posts/2022/azs23d7/" target="_blank">Golang基础学习十二 | 切片</a></li>
+        
+        <li><a href="/posts/2022/vg9drtc/" target="_blank">Golang基础学习十一 | 结构体</a></li>
+        
+        <li><a href="/posts/2022/6jqqa66/" target="_blank">Golang基础学习十 | 指针</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/Golang'>Golang</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    
+    
+
+</div>
+
+                    <footer id="footer">
+    <div class="footer-item">
+        &copy; 2023 <a rel="nofollow" target="_blank" href="https://zloong.github.io">Eric的个人博客</a>
+    </div>
+    <div class="footer-item">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-red">Maupassant</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/cseric" target="_black"><span class="badge-subject">Modified by</span><span class="badge-value bg-brightgreen">cseric</span></a>
+        </div>
+    </div>
+    
+    <div class="footer-item">
+        <span>-</span>
+        <span id="busuanzi_container_site_pv">
+            本站总访问量 <span id="busuanzi_value_site_pv" style="color: #1E90FF;"></span> 次
+        </span>
+        <span>|</span>
+        <span id="busuanzi_container_site_uv">
+          本站访客数 <span id="busuanzi_value_site_uv" style="color: #1E90FF;"></span> 人次
+        </span>
+        <span>-</span>
+    </div>
+    
+    <div class="footer-item">
+        本站文章采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" style="color: #1E90FF;"><b>BY-NC 4.0</b></a>进行许可
+    </div>
+    
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='//cdn.bootcdn.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="back-top"><img src="/img/top.svg" title="回到顶部"></a>
+<script type="text/javascript" src='/js/totop.js'></script>
+<style type="text/css">
+div.highlight {
+    position: relative;
+    margin: 1em 0px;
+}
+
+.copy-code {
+    display: none;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 35px;
+    height: 25px;
+     
+    background: rgba(47, 53, 66, 0.8) url("/img/copy.svg") center no-repeat;
+    padding: 0 5px;
+    font: inherit;
+    user-select: none;
+    cursor: pointer;
+    border: 1px solid #666;
+    border-radius: 3px;
+}
+
+div.highlight:hover .copy-code,pre:hover .copy-code {
+    display: block;
+}
+
+</style>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+
+        function copyingDone() {
+          copybutton.style.background = 'rgba(47, 53, 66, 0.8) url("/img/copied.svg") center no-repeat';
+            setTimeout(() => {
+              copybutton.style.background = 'rgba(47, 53, 66, 0.8) url("/img/copy.svg") center no-repeat';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+                </div>
+
+                <div id="secondary">
+
+    <section class="widget">
+        <div class="profile-area">
+  <a class="profile-avatar" href="/">
+    <img src="/img/avatar.jpg">
+  </a>
+  <span class="profile-author">问渊Eric</span>
+  <span class="profile-bio">萌新一枚，请多指教</span>
+  
+    <div class="profile-social">
+        
+        <a rel="nofollow" target="_blank" href="https://github.com/cseric"><img src="/img/social/github.svg" title="github"></a>
+        
+        <a rel="nofollow" target="_blank" href="https://space.bilibili.com/350616958"><img src="/img/social/bilibili.svg" title="哔哩哔哩"></a>
+        
+    </div>
+    
+</div>
+    </section>
+
+    
+  
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/h4fvxqg/" title="Ubuntu20.04更换国内源教程" target="_blank">Ubuntu20.04更换国内源教程</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/1ouigkd/" title="Golang基础学习十四 | 接口" target="_blank">Golang基础学习十四 | 接口</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/nh22l8v/" title="Golang基础学习十三 | 集合" target="_blank">Golang基础学习十三 | 集合</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/azs23d7/" title="Golang基础学习十二 | 切片" target="_blank">Golang基础学习十二 | 切片</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/vg9drtc/" title="Golang基础学习十一 | 结构体" target="_blank">Golang基础学习十一 | 结构体</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/6jqqa66/" title="Golang基础学习十 | 指针" target="_blank">Golang基础学习十 | 指针</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/6jqqa66/" title="Golang基础学习九 | 数组" target="_blank">Golang基础学习九 | 数组</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/csi3zxn/" title="Golang基础学习八 | 函数" target="_blank">Golang基础学习八 | 函数</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/a0kkkog/" title="Golang基础学习七 | 条件和循环" target="_blank">Golang基础学习七 | 条件和循环</a>
+    </li>
+    
+    <li class="recent-post-item">
+        <a href="https://zloong.github.io/posts/2022/euc6c0t/" title="Golang基础学习六 | 运算符" target="_blank">Golang基础学习六 | 运算符</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li class="categories-item"><a href="https://zloong.github.io/categories/C/">C (1)</a></li>
+    
+    <li class="categories-item"><a href="https://zloong.github.io/categories/C&#43;&#43;/">C&#43;&#43; (4)</a></li>
+    
+    <li class="categories-item"><a href="https://zloong.github.io/categories/Golang/">Golang (15)</a></li>
+    
+    <li class="categories-item"><a href="https://zloong.github.io/categories/Linux/">Linux (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://zloong.github.io/tags/C/">C</a>
+    
+    <a href="https://zloong.github.io/tags/C&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="https://zloong.github.io/tags/Golang/">Golang</a>
+    
+    <a href="https://zloong.github.io/tags/Linux/">Linux</a>
+    
+    <a href="https://zloong.github.io/tags/VSCode/">VSCode</a>
+    
+    <a href="https://zloong.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://zloong.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

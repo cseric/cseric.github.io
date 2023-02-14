@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C&#43;&#43; on Eric的个人博客</title>
-    <link>https://zloong.github.io/categories/C&#43;&#43;/</link>
+    <link>https://zloong921.github.io/categories/C&#43;&#43;/</link>
     <description>Recent content in C&#43;&#43; on Eric的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 23 Jul 2022 11:06:04 +0800</lastBuildDate><atom:link href="https://zloong.github.io/categories/C++/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Jul 2022 11:06:04 +0800</lastBuildDate><atom:link href="https://zloong921.github.io/categories/C++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用VS Code&#43;Clangd&#43;CMake搭建C&#43;&#43;开发环境</title>
-      <link>https://zloong.github.io/posts/2022/54uzi8k/</link>
+      <link>https://zloong921.github.io/posts/2022/54uzi8k/</link>
       <pubDate>Sat, 23 Jul 2022 11:06:04 +0800</pubDate>
       
-      <guid>https://zloong.github.io/posts/2022/54uzi8k/</guid>
+      <guid>https://zloong921.github.io/posts/2022/54uzi8k/</guid>
       <description>&lt;p&gt;本文是基于WSL2的Ubuntu20.04搭建的C/C++开发环境&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>C&#43;&#43;继承和复合关系的构造和析构</title>
-      <link>https://zloong.github.io/posts/2022/yix6d89/</link>
+      <link>https://zloong921.github.io/posts/2022/yix6d89/</link>
       <pubDate>Thu, 21 Jul 2022 20:59:37 +0800</pubDate>
       
-      <guid>https://zloong.github.io/posts/2022/yix6d89/</guid>
+      <guid>https://zloong921.github.io/posts/2022/yix6d89/</guid>
       <description>&lt;p&gt;本文将分析C++中继承和组合同时运用时构造和析构的执行顺序。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>C&#43;&#43;学习笔记 | 引用</title>
-      <link>https://zloong.github.io/posts/2022/xyus4op/</link>
+      <link>https://zloong921.github.io/posts/2022/xyus4op/</link>
       <pubDate>Sun, 10 Jul 2022 17:59:37 +0800</pubDate>
       
-      <guid>https://zloong.github.io/posts/2022/xyus4op/</guid>
+      <guid>https://zloong921.github.io/posts/2022/xyus4op/</guid>
       <description>&lt;p&gt;C++提供了一种类似指针的类型-引用，但引用是为对象取别名，一旦定义，引用就和对象绑定，不能更改指向。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>C&#43;&#43;学习笔记 | 常量</title>
-      <link>https://zloong.github.io/posts/2022/ozv0dev/</link>
+      <link>https://zloong921.github.io/posts/2022/ozv0dev/</link>
       <pubDate>Sun, 10 Jul 2022 15:35:31 +0800</pubDate>
       
-      <guid>https://zloong.github.io/posts/2022/ozv0dev/</guid>
+      <guid>https://zloong921.github.io/posts/2022/ozv0dev/</guid>
       <description>&lt;p&gt;有时我们希望定义一些固定不变的数据，这时我们就可以使用C++给我们提供的const关键字对变量进行修饰，使其值不能再改变。&lt;/p&gt;</description>
     </item>
     

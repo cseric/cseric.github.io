@@ -2,224 +2,224 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Eric的个人博客</title>
-    <link>https://zloong921.github.io/</link>
+    <link>https://cseric.com/</link>
     <description>Recent content on Eric的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 10 Aug 2022 13:11:23 +0800</lastBuildDate><atom:link href="https://zloong921.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Aug 2022 13:11:23 +0800</lastBuildDate><atom:link href="https://cseric.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ubuntu20.04更换国内源教程</title>
-      <link>https://zloong921.github.io/posts/2022/h4fvxqg/</link>
+      <link>https://cseric.com/posts/2022/h4fvxqg/</link>
       <pubDate>Wed, 10 Aug 2022 13:11:23 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/h4fvxqg/</guid>
+      <guid>https://cseric.com/posts/2022/h4fvxqg/</guid>
       <description>&lt;p&gt;安装Ubuntu系统之后，第一件事就是更换国内源加快程序和依赖的下载和更新加速。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Golang基础学习十四 | 接口</title>
-      <link>https://zloong921.github.io/posts/2022/1ouigkd/</link>
+      <link>https://cseric.com/posts/2022/1ouigkd/</link>
       <pubDate>Sat, 06 Aug 2022 20:15:11 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/1ouigkd/</guid>
+      <guid>https://cseric.com/posts/2022/1ouigkd/</guid>
       <description>&lt;p&gt;Go语言提供了接口数据类型，接口就是将所有具有共性的方法定义在一起，其他类型只要实现了这些方法就实现了这个接口。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Golang基础学习十三 | 集合</title>
-      <link>https://zloong921.github.io/posts/2022/nh22l8v/</link>
+      <link>https://cseric.com/posts/2022/nh22l8v/</link>
       <pubDate>Sat, 06 Aug 2022 18:11:41 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/nh22l8v/</guid>
+      <guid>https://cseric.com/posts/2022/nh22l8v/</guid>
       <description>&lt;p&gt;Go语言提供了集合数据类型Map，Map是一种无序的键值对的集合。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Golang基础学习十二 | 切片</title>
-      <link>https://zloong921.github.io/posts/2022/azs23d7/</link>
+      <link>https://cseric.com/posts/2022/azs23d7/</link>
       <pubDate>Sat, 06 Aug 2022 17:21:32 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/azs23d7/</guid>
+      <guid>https://cseric.com/posts/2022/azs23d7/</guid>
       <description>&lt;p&gt;切片是Go语言提供的一种灵活且功能强大的“动态数组”，与数组相比，切片长度不固定，可以追加元素。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Golang基础学习十一 | 结构体</title>
-      <link>https://zloong921.github.io/posts/2022/vg9drtc/</link>
+      <link>https://cseric.com/posts/2022/vg9drtc/</link>
       <pubDate>Sat, 06 Aug 2022 16:32:26 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/vg9drtc/</guid>
+      <guid>https://cseric.com/posts/2022/vg9drtc/</guid>
       <description>&lt;p&gt;Go语言中数组可以存储同一类型的数据，但Go语言提供了结构体来存储不同类型的数据。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Golang基础学习十 | 指针</title>
-      <link>https://zloong921.github.io/posts/2022/6jqqa66/</link>
+      <link>https://cseric.com/posts/2022/6jqqa66/</link>
       <pubDate>Sat, 06 Aug 2022 15:22:21 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/6jqqa66/</guid>
+      <guid>https://cseric.com/posts/2022/6jqqa66/</guid>
       <description>&lt;p&gt;Go语言也有指针，但相对于C/C++的指针来说，Go的指针更为简单，特别要注意的一点就是Go语言没有指针运算。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Golang基础学习九 | 数组</title>
-      <link>https://zloong921.github.io/posts/2022/6jqqa66/</link>
+      <link>https://cseric.com/posts/2022/6jqqa66/</link>
       <pubDate>Sat, 06 Aug 2022 11:21:53 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/6jqqa66/</guid>
+      <guid>https://cseric.com/posts/2022/6jqqa66/</guid>
       <description>&lt;p&gt;Go语言中也提供了数组，数组是一组相同类型数据的集合，可以通过索引来读取或者修改其中元素的值。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Golang基础学习八 | 函数</title>
-      <link>https://zloong921.github.io/posts/2022/csi3zxn/</link>
+      <link>https://cseric.com/posts/2022/csi3zxn/</link>
       <pubDate>Sat, 06 Aug 2022 10:39:15 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/csi3zxn/</guid>
+      <guid>https://cseric.com/posts/2022/csi3zxn/</guid>
       <description>&lt;p&gt;Go语言和C语言一样也有函数，通过函数可以划分和执行不同的功能，Go语言至少有一个main函数。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Golang基础学习七 | 条件和循环</title>
-      <link>https://zloong921.github.io/posts/2022/a0kkkog/</link>
+      <link>https://cseric.com/posts/2022/a0kkkog/</link>
       <pubDate>Fri, 05 Aug 2022 21:19:36 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/a0kkkog/</guid>
+      <guid>https://cseric.com/posts/2022/a0kkkog/</guid>
       <description>&lt;p&gt;Go语言的条件和循环语句和C相似，但也有一些特殊且独有的用法和写法。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Golang基础学习六 | 运算符</title>
-      <link>https://zloong921.github.io/posts/2022/euc6c0t/</link>
+      <link>https://cseric.com/posts/2022/euc6c0t/</link>
       <pubDate>Fri, 05 Aug 2022 16:51:30 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/euc6c0t/</guid>
+      <guid>https://cseric.com/posts/2022/euc6c0t/</guid>
       <description>&lt;p&gt;运算符也是一门语言的最重要的部分，Go语言的大部分运算符和C语言一样，但是也有例外。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Linux下安装Golang教程</title>
-      <link>https://zloong921.github.io/posts/2022/tvcq7zs/</link>
+      <link>https://cseric.com/posts/2022/tvcq7zs/</link>
       <pubDate>Fri, 05 Aug 2022 10:20:04 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/tvcq7zs/</guid>
+      <guid>https://cseric.com/posts/2022/tvcq7zs/</guid>
       <description>&lt;p&gt;本教程使用Ubuntu演示在Linux如何安装和配置Golang编译环境。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Golang基础学习五 | 常量介绍</title>
-      <link>https://zloong921.github.io/posts/2022/w6lpt6y/</link>
+      <link>https://cseric.com/posts/2022/w6lpt6y/</link>
       <pubDate>Thu, 04 Aug 2022 21:09:00 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/w6lpt6y/</guid>
+      <guid>https://cseric.com/posts/2022/w6lpt6y/</guid>
       <description>&lt;p&gt;写程序除了变量，还有常量，Go语言和C语言的常量一样，使用const来声明常量。Go语言还有一个特殊的常量iota，可以用来声明和定义枚举常量&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Golang基础学习四 | 变量介绍</title>
-      <link>https://zloong921.github.io/posts/2022/0n1wz73/</link>
+      <link>https://cseric.com/posts/2022/0n1wz73/</link>
       <pubDate>Sun, 31 Jul 2022 16:00:29 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/0n1wz73/</guid>
+      <guid>https://cseric.com/posts/2022/0n1wz73/</guid>
       <description>&lt;p&gt;有了数据类型，就要开始使用编程中经常打交道的变量了，Go语言的变量声明和定义和C语言不一样，它是类型后置的，也提供了多种声明和定义方式。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Golang基础学习三 | 数据类型</title>
-      <link>https://zloong921.github.io/posts/2022/9zijhfe/</link>
+      <link>https://cseric.com/posts/2022/9zijhfe/</link>
       <pubDate>Sun, 31 Jul 2022 14:08:40 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/9zijhfe/</guid>
+      <guid>https://cseric.com/posts/2022/9zijhfe/</guid>
       <description>&lt;p&gt;数据类型是一门语言重要的基石，Go语言也给我们提供了很多数据类型，其中也包括C语言中熟悉的指针，但Go语言的指针没有C语言的复杂。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Golang基础学习二 | 语法风格和规范</title>
-      <link>https://zloong921.github.io/posts/2022/1oxzt2l/</link>
+      <link>https://cseric.com/posts/2022/1oxzt2l/</link>
       <pubDate>Fri, 29 Jul 2022 20:11:31 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/1oxzt2l/</guid>
+      <guid>https://cseric.com/posts/2022/1oxzt2l/</guid>
       <description>&lt;p&gt;Go语言非常简洁，但是它也有些严格，它有一套自己的语法风格和规范。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Golang基础学习一 | 第一个程序</title>
-      <link>https://zloong921.github.io/posts/2022/yx07tbv/</link>
+      <link>https://cseric.com/posts/2022/yx07tbv/</link>
       <pubDate>Fri, 29 Jul 2022 16:06:00 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/yx07tbv/</guid>
+      <guid>https://cseric.com/posts/2022/yx07tbv/</guid>
       <description>&lt;p&gt;Golang（简称Go）是由 Google的 Robert Griesemer，Rob Pike 及 Ken Thompson开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>C语言单链表的定义和使用</title>
-      <link>https://zloong921.github.io/posts/2022/o87umu5/</link>
+      <link>https://cseric.com/posts/2022/o87umu5/</link>
       <pubDate>Mon, 25 Jul 2022 10:39:21 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/o87umu5/</guid>
+      <guid>https://cseric.com/posts/2022/o87umu5/</guid>
       <description>&lt;p&gt;链表是一种常见而又重要的数据结构，本文将通过一个示例介绍C语言中单链表的定义和使用。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用VS Code&#43;Clangd&#43;CMake搭建C&#43;&#43;开发环境</title>
-      <link>https://zloong921.github.io/posts/2022/54uzi8k/</link>
+      <link>https://cseric.com/posts/2022/54uzi8k/</link>
       <pubDate>Sat, 23 Jul 2022 11:06:04 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/54uzi8k/</guid>
+      <guid>https://cseric.com/posts/2022/54uzi8k/</guid>
       <description>&lt;p&gt;本文是基于WSL2的Ubuntu20.04搭建的C/C++开发环境&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>C&#43;&#43;继承和复合关系的构造和析构</title>
-      <link>https://zloong921.github.io/posts/2022/yix6d89/</link>
+      <link>https://cseric.com/posts/2022/yix6d89/</link>
       <pubDate>Thu, 21 Jul 2022 20:59:37 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/yix6d89/</guid>
+      <guid>https://cseric.com/posts/2022/yix6d89/</guid>
       <description>&lt;p&gt;本文将分析C++中继承和组合同时运用时构造和析构的执行顺序。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>C&#43;&#43;学习笔记 | 引用</title>
-      <link>https://zloong921.github.io/posts/2022/xyus4op/</link>
+      <link>https://cseric.com/posts/2022/xyus4op/</link>
       <pubDate>Sun, 10 Jul 2022 17:59:37 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/xyus4op/</guid>
+      <guid>https://cseric.com/posts/2022/xyus4op/</guid>
       <description>&lt;p&gt;C++提供了一种类似指针的类型-引用，但引用是为对象取别名，一旦定义，引用就和对象绑定，不能更改指向。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>C&#43;&#43;学习笔记 | 常量</title>
-      <link>https://zloong921.github.io/posts/2022/ozv0dev/</link>
+      <link>https://cseric.com/posts/2022/ozv0dev/</link>
       <pubDate>Sun, 10 Jul 2022 15:35:31 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/ozv0dev/</guid>
+      <guid>https://cseric.com/posts/2022/ozv0dev/</guid>
       <description>&lt;p&gt;有时我们希望定义一些固定不变的数据，这时我们就可以使用C++给我们提供的const关键字对变量进行修饰，使其值不能再改变。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>关于我</title>
-      <link>https://zloong921.github.io/about/</link>
+      <link>https://cseric.com/about/</link>
       <pubDate>Fri, 01 Jul 2022 23:44:42 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/about/</guid>
+      <guid>https://cseric.com/about/</guid>
       <description>👋 我是张龙 🚀 一个即将大学毕业的00后 🔥 正在学习 C/C++ 和 Golang 🌈 也看看Python&amp;hellip; 近期在做 🌒 努力写博客中&amp;hellip; 🌓 努力写毕设中</description>
     </item>
     
     <item>
       <title>归档</title>
-      <link>https://zloong921.github.io/archives/</link>
+      <link>https://cseric.com/archives/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zloong921.github.io/archives/</guid>
+      <guid>https://cseric.com/archives/</guid>
       <description></description>
     </item>
     
     <item>
       <title>搜索</title>
-      <link>https://zloong921.github.io/search/</link>
+      <link>https://cseric.com/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zloong921.github.io/search/</guid>
+      <guid>https://cseric.com/search/</guid>
       <description></description>
     </item>
     

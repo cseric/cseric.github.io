@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Eric的个人博客</title>
-    <link>https://zloong921.github.io/tags/Linux/</link>
+    <link>https://cseric.com/tags/Linux/</link>
     <description>Recent content in Linux on Eric的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 10 Aug 2022 13:11:23 +0800</lastBuildDate><atom:link href="https://zloong921.github.io/tags/Linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Aug 2022 13:11:23 +0800</lastBuildDate><atom:link href="https://cseric.com/tags/Linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ubuntu20.04更换国内源教程</title>
-      <link>https://zloong921.github.io/posts/2022/h4fvxqg/</link>
+      <link>https://cseric.com/posts/2022/h4fvxqg/</link>
       <pubDate>Wed, 10 Aug 2022 13:11:23 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/h4fvxqg/</guid>
+      <guid>https://cseric.com/posts/2022/h4fvxqg/</guid>
       <description>&lt;p&gt;安装Ubuntu系统之后，第一件事就是更换国内源加快程序和依赖的下载和更新加速。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Linux下安装Golang教程</title>
-      <link>https://zloong921.github.io/posts/2022/tvcq7zs/</link>
+      <link>https://cseric.com/posts/2022/tvcq7zs/</link>
       <pubDate>Fri, 05 Aug 2022 10:20:04 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/tvcq7zs/</guid>
+      <guid>https://cseric.com/posts/2022/tvcq7zs/</guid>
       <description>&lt;p&gt;本教程使用Ubuntu演示在Linux如何安装和配置Golang编译环境。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用VS Code&#43;Clangd&#43;CMake搭建C&#43;&#43;开发环境</title>
-      <link>https://zloong921.github.io/posts/2022/54uzi8k/</link>
+      <link>https://cseric.com/posts/2022/54uzi8k/</link>
       <pubDate>Sat, 23 Jul 2022 11:06:04 +0800</pubDate>
       
-      <guid>https://zloong921.github.io/posts/2022/54uzi8k/</guid>
+      <guid>https://cseric.com/posts/2022/54uzi8k/</guid>
       <description>&lt;p&gt;本文是基于WSL2的Ubuntu20.04搭建的C/C++开发环境&lt;/p&gt;</description>
     </item>
     

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>VSCode on Eric的个人博客</title>
-    <link>https://cseric.com/tags/VSCode/</link>
+    <link>https://nilptr.top/tags/VSCode/</link>
     <description>Recent content in VSCode on Eric的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 23 Jul 2022 11:06:04 +0800</lastBuildDate><atom:link href="https://cseric.com/tags/VSCode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Jul 2022 11:06:04 +0800</lastBuildDate><atom:link href="https://nilptr.top/tags/VSCode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用VS Code&#43;Clangd&#43;CMake搭建C&#43;&#43;开发环境</title>
-      <link>https://cseric.com/posts/2022/54uzi8k/</link>
+      <link>https://nilptr.top/posts/2022/54uzi8k/</link>
       <pubDate>Sat, 23 Jul 2022 11:06:04 +0800</pubDate>
       
-      <guid>https://cseric.com/posts/2022/54uzi8k/</guid>
+      <guid>https://nilptr.top/posts/2022/54uzi8k/</guid>
       <description>&lt;p&gt;本文是基于WSL2的Ubuntu20.04搭建的C/C++开发环境&lt;/p&gt;</description>
     </item>
     

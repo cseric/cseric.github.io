@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Eric的个人博客</title>
-    <link>https://cseric.com/categories/Linux/</link>
+    <link>https://nilptr.top/categories/Linux/</link>
     <description>Recent content in Linux on Eric的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 10 Aug 2022 13:11:23 +0800</lastBuildDate><atom:link href="https://cseric.com/categories/Linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Aug 2022 13:11:23 +0800</lastBuildDate><atom:link href="https://nilptr.top/categories/Linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ubuntu20.04更换国内源教程</title>
-      <link>https://cseric.com/posts/2022/h4fvxqg/</link>
+      <link>https://nilptr.top/posts/2022/h4fvxqg/</link>
       <pubDate>Wed, 10 Aug 2022 13:11:23 +0800</pubDate>
       
-      <guid>https://cseric.com/posts/2022/h4fvxqg/</guid>
+      <guid>https://nilptr.top/posts/2022/h4fvxqg/</guid>
       <description>&lt;p&gt;安装Ubuntu系统之后，第一件事就是更换国内源加快程序和依赖的下载和更新加速。&lt;/p&gt;</description>
     </item>
     
